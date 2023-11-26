@@ -24,14 +24,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body
+        className={`${inter.className} h-screen flex flex-col overflow-hidden`}
+      >
         <Providers>
           <Navbar />
-          <Flex flex={1} flexDirection={"row"}>
+          <Flex flex={1} flexDirection={"row"} overflow={"hidden"}>
             <Suspense>
               <SideBar />
             </Suspense>
-            <Flex flex={1} flexDirection={"column"} overflow={"scroll"}>
+            <Flex
+              as="main"
+              flex={1}
+              flexDirection={"column"}
+              overflow={"hidden"}
+              // overflow={"scroll"}
+            >
               {children}
             </Flex>
           </Flex>

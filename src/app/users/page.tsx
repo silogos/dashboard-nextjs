@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Flex } from "@chakra-ui/react";
-import DashboardHeader from "../dashboard-header";
+import DashboardHeader from "@/components/dashboard-header";
 
 export const metadata: Metadata = {
   title: "Users Data",
