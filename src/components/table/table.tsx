@@ -39,7 +39,7 @@ export default function Table<T>({ data, columns }: ITable<T>) {
   const rowVirtualizer = useVirtual({
     parentRef: tableContainerRef,
     size: rows.length,
-    overscan: 50,
+    overscan: 100,
   });
   const { virtualItems: virtualRows, totalSize } = rowVirtualizer;
 

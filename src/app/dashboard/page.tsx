@@ -1,19 +1,8 @@
 import { Flex } from "@chakra-ui/react";
 import Table from "@/components/table";
 import DashboardHeader from "@/components/dashboard-header";
-
-export interface SalesResponse {
-  data: {
-    id: number;
-    name: string;
-    sales_id: string;
-    item_id: number;
-    qty: number;
-    consumen_name: string;
-    transaction_date: string;
-  }[];
-  message: string;
-}
+import { ColumnDef } from "@tanstack/react-table";
+import { SalesResponse } from "@/types/ResponseAPI";
 
 async function getData(): Promise<SalesResponse> {
   const res = await fetch("https://delman-fe-api.fly.dev/");
@@ -27,7 +16,7 @@ async function getData(): Promise<SalesResponse> {
 
 export default async function Dashboard() {
   const data = await getData();
-  const columns = [
+  const columns: ColumnDef<SalesResponse["data"][0]>[] = [
     {
       accessorKey: "id",
       header: "id",
@@ -65,7 +54,7 @@ export default async function Dashboard() {
         title="Sales Dashboard"
         description="List of Sales Data"
       />
-      <Table columns={columns} data={data.data as any} />
+      <Table columns={columns} data={data.data} />
     </Flex>
   );
 }
